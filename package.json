@@ -1,0 +1,11 @@
+{
+  "name": "api-rev",
+  "version": "1.0.0",
+  "description": "Api desenvolvida no programa explore da rocketseat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gabriel Vitebo",
+  "license": "ISC"
+}
