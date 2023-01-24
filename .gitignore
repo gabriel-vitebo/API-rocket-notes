@@ -12,7 +12,8 @@ index.md
 controllers.md
 UsersController.md
 utils.md
-database.md
+study-database.md
 index-database.md
 creatUsers.md
 indexMigration.md
+bcrypt.md
