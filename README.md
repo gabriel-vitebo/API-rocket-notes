@@ -36,7 +36,7 @@
     
     --> [database.db](./src/database/database.db)
 
-- [routes]()
+- [routes](./src/routes/README.md)
 
   --> [index.js](./src/routes/index.js)
 
@@ -46,7 +46,7 @@
 
   --> [users.routes.js](./src/routes/users.routes.js)
 
-- [utils]()
+- [utils](./src/utils/README.md)
 
   --> [AppError.js](./src/utils/AppError.js)
 
