@@ -1,16 +1,42 @@
+const AppError = require("../utils/AppError")
+
 const UserCreateService = require("./UserCreateService")
 const UserRepositoryInMemory = require("../repositories/UserRepositoryInMemory")
 
-it("user should be create", async () => {
-  const user = {
-    name: "User Test",
-    email: "user@test.com",
-    password: "test",
-  }
+describe("UserCreateService", () => {
+  it("user should be create", async () => {
+    const user = {
+      name: "User Test",
+      email: "user@test.com",
+      password: "test",
+    }
 
-  const userRepositoryInMemory = new UserRepositoryInMemory()
-  const userCreateService = new UserCreateService(userRepositoryInMemory)
-  const userCreated = await userCreateService.execute(user)
+    const userRepositoryInMemory = new UserRepositoryInMemory()
+    const userCreateService = new UserCreateService(userRepositoryInMemory)
+    const userCreated = await userCreateService.execute(user)
 
-  expect(userCreated).toHaveProperty("id")
+    expect(userCreated).toHaveProperty("id")
+  })
+
+  it("user not should be created with exist email ", async () => {
+    const user1 = {
+      name: "user test 1",
+      email: "user@test.com",
+      password: "test",
+    }
+
+    const user2 = {
+      name: "user test 2",
+      email: "user@test.com",
+      password: "123",
+    }
+
+    const useRepository = new UserRepositoryInMemory()
+    const userCreateService = new UserCreateService(useRepository)
+
+    await userCreateService.execute(user1)
+    await expect(userCreateService.execute(user2)).rejects.toEqual(
+      new AppError("Este email já está cadastrado")
+    )
+  })
 })
